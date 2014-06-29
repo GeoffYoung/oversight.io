@@ -1,5 +1,7 @@
 .DS_Store
 /todo.txt
+node_modules
+bower_components
 config.js
 /data
 *.log
