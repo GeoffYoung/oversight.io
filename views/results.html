@@ -1,0 +1,49 @@
+<% include layout/header.html %>
+
+
+<form action="results.html" method="GET">
+  <br>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 input-group input-group-lg">
+    <input type="text" class="form-control input-lg" name="query" value="<%= query %>">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-lg btn-info" type="button">Searcg Again</button>
+    </span>
+  </div>
+</form>
+
+
+<section class="content-block search-results">
+  <div class="container">
+
+    <p class="col-xs-6"><%= results.hits.total %> Results <strong><%= query %></strong></p>
+    <p class="col-xs-6 text-right">
+      <a href="#"><strike>Subscribe to this search</strike></a>
+    </p>
+
+    <% if (results) { %>
+    <% for (var i=0; i<hits.length; i++) { %>
+
+    <a href="/report/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12">
+      <div class="card">
+        <div class="row">
+          <h4 class="col-xs-10 col-xs-offset-1"><%= report.title %></h4>
+        </div>
+        <hr>
+        <div class="row">
+          <p class="col-xs-3 col-xs-offset-1 text-left "><%= report.published_on %></p>
+          <p class="col-xs-7 text-right"><%= report.agency_name %></p>
+        </div>
+      </div>
+    </a>
+
+
+      <% } %>
+    <% } else { %>
+      <h1>Error performing the search!</h1>
+    <% } %>
+
+
+  </div>
+</section>
+
+<% include layout/footer.html %>

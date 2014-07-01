@@ -25,6 +25,21 @@ module.exports = {
     })
   },
 
+  results: function(req, res) {
+    search(req.param("query") || "*").then(function(results) {
+      res.render("results.html", {
+        results: results,
+        query: req.param("query")
+      });
+    }, function(err) {
+      console.log("Noooo!");
+      res.render("results.html", {
+        results: null,
+        query: null
+      });
+    });
+  },
+
   report: function(req, res) {
     get(req.param("report_id")).then(function(result) {
       res.render("report.html", {
