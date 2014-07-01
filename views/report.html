@@ -4,25 +4,27 @@
 <div class="container content-block">
 
 
-  <h2><%= report.title %></h2>
+  <h2 class="col-xs-12"><%= report.title %></h2>
 
-  <div class="col-xs-4">
-    <p><%= report.published_on %></p>
-  </div>
-  <div class="col-xs-8 text-right">
-    <p>
-      More reports from
-      <a href="<%= report.inspector_url %>"><%= report.agency_name %></a>
-    </p>
-    <p>
-      <% if (report.url) { %>
-      <p>Download the <a href="<%= report.url %>">original report</a></p>
-      <% } else if (report.unreleased) { %>
-      This report is unreleased, or missing. Visit its
-      <a href="<%= report.landing_url %>">landing page</a>
-      for more detail.
-      <% } %>
-    </p>
+  <div class="col-xs-12">
+    <div class="col-xs-4">
+      <p><%= report.published_on %></p>
+    </div>
+    <div class="col-xs-8 text-right">
+      <p>
+        More reports from
+        <a href="<%= report.inspector_url %>"><%= report.agency_name %></a>
+      </p>
+      <p>
+        <% if (report.url) { %>
+        <p>Download the <a href="<%= report.url %>">original report</a></p>
+        <% } else if (report.unreleased) { %>
+        This report is unreleased, or missing. Visit its
+        <a href="<%= report.landing_url %>">landing page</a>
+        for more detail.
+        <% } %>
+      </p>
+    </div>
   </div>
 
   <div class="col-xs-12">
