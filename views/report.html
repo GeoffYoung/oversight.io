@@ -1,37 +1,35 @@
 <% include layout/header.html %>
 
 <% if (report) { %>
+<div class="container content-block">
 
-  <h2>
-  <%= report.title %>
-  </h2>
 
-  <h4>
-    <a href="<%= report.inspector_url %>">
-      <%= report.agency_name %></a>
-    &mdash;
-    <%= report.published_on %>
-  </h4>
+  <h2><%= report.title %></h2>
 
-  <p>
-    <% if (report.url) { %>
-      Below is a hideous rendition of the
-      <a href="<%= report.url %>">original report</a>.
-      <% if (report.file_type == "pdf") { %>
-        (PDF)
-      <% } %>
-    <% } else if (report.unreleased) { %>
+  <div class="col-xs-4">
+    <p><%= report.published_on %></p>
+  </div>
+  <div class="col-xs-8 text-right">
+    <p>
+      More reports from
+      <a href="<%= report.inspector_url %>"><%= report.agency_name %></a>
+    </p>
+    <p>
+      <% if (report.url) { %>
+      <p>Download the <a href="<%= report.url %>">original report</a></p>
+      <% } else if (report.unreleased) { %>
       This report is unreleased, or missing. Visit its
       <a href="<%= report.landing_url %>">landing page</a>
       for more detail.
-    <% } %>
-  </p>
+      <% } %>
+    </p>
+  </div>
 
-  <% if (report.text) { %>
-    <section class="text">
+  <div class="col-xs-12">
     <pre><%= report.text %></pre>
-    </section>
-  <% } %>
+  </div>
+
+  </div>
 
 <% } else { %>
   Error loading report.
