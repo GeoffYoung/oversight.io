@@ -21,21 +21,22 @@
     </p>
 
     <% if (results) { %>
+    <% hits = results.hits.hits %>
     <% for (var i=0; i<hits.length; i++) { %>
+      <% report = hits[i]._source %>
 
-    <a href="/report/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12">
-      <div class="card">
-        <div class="row">
-          <h4 class="col-xs-10 col-xs-offset-1"><%= report.title %></h4>
+      <a href="/report/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12">
+        <div class="card">
+          <div class="row">
+            <h4 class="col-xs-10 col-xs-offset-1"><%= report.title %></h4>
+          </div>
+          <hr>
+          <div class="row">
+            <p class="col-xs-3 col-xs-offset-1 text-left "><%= report.published_on %></p>
+            <p class="col-xs-7 text-right"><%= report.agency_name %></p>
+          </div>
         </div>
-        <hr>
-        <div class="row">
-          <p class="col-xs-3 col-xs-offset-1 text-left "><%= report.published_on %></p>
-          <p class="col-xs-7 text-right"><%= report.agency_name %></p>
-        </div>
-      </div>
-    </a>
-
+      </a>
 
       <% } %>
     <% } else { %>
