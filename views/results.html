@@ -28,7 +28,12 @@
       <a href="/report/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12">
         <div class="card">
           <div class="row">
-            <h4 class="col-xs-10 col-xs-offset-1"><%= report.title %></h4>
+            <h4 class="col-xs-10 col-xs-offset-1">
+              <%= report.title %>
+              <% if (report.file_type == "pdf") { %>
+              [PDF]
+              <% } %>
+            </h4>
           </div>
           <hr>
           <div class="row">
