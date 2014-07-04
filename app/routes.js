@@ -26,11 +26,11 @@ module.exports = {
   },
 
   redirect: function(req, res){
-    res.redirect('/results/'+req.param('query'));
+    res.redirect( '/results/'+encodeURIComponent(req.param('query')) );
   },
 
   results: function(req, res) {
-    search(req.param("query") || "*").then(function(results) {
+    search(encodeURIComponent( req.param("query") ) || "*").then(function(results) {
       res.render("results.html", {
         results: results,
         query: req.param("query")
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   rss: function(req, res) {
-    search(req.param("query") || "*").then(function(results) {
+    search(encodeURIComponent( req.param("query") ) || "*").then(function(results) {
       var hits = results.hits.hits;
       var RSS = require('rss');
       var feed = new RSS({
