@@ -42,84 +42,13 @@
 
   <h2 class="col-xs-12 content-heading">Browse Reports by Agency</h2>
 
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
+  <% for(var key in agencies) { %>
+    <a href="/agency/<%= key %>" class="col-xs-12 col-sm-6 col-md-4">
       <div class="card">
-        <h4 class="text-center">Amtrak</h4>
+        <h4 class="text-center"><%= agencies[key] %></h4>
       </div>
     </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of Homeland Security</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of Defense</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of Justice</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of Transportation</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-      <h4 class="text-center">Department of Energy</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Environmental Protection Agency</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of Housing and Urban Development</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">General Services Administration</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Office of Personnel Management</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Securities and Exchange Commission</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">Department of State</h4>
-      </div>
-    </a>
-
-    <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <h4 class="text-center">US Postal Service</h4>
-      </div>
-    </a>
-
+  <% } %>
 
   </div>
 </section>

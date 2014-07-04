@@ -14,6 +14,7 @@ module.exports = {
     search(req.param("query") || "*").then(function(results) {
       res.render("index.html", {
         results: results,
+        agencies: require("./agencies"),
         query: req.param("query")
       });
     }, function(err) {
