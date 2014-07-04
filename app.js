@@ -25,7 +25,9 @@ else
 // helpers and routes
 app.locals.helpers = require("./app/helpers");
 app.get('/', routes.index);
-app.get('/results', routes.results);
+app.get('/results', routes.redirect);
+app.get('/results/:query', routes.results);
+app.get('/results/:query/rss', routes.rss);
 app.get('/report/:inspector/:report_id', routes.report);
 
 

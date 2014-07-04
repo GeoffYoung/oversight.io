@@ -39,7 +39,8 @@
 
     "glob": "*",
     "async": "*",
-    "minimist": "*"
+    "minimist": "*",
+    "rss": "0.3.2"
   },
   "devDependencies": {
     "bower": "1.3.5",

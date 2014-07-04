@@ -25,6 +25,10 @@ module.exports = {
     })
   },
 
+  redirect: function(req, res){
+    res.redirect('/results/'+req.param('query'));
+  },
+
   results: function(req, res) {
     search(req.param("query") || "*").then(function(results) {
       res.render("results.html", {
@@ -37,6 +41,33 @@ module.exports = {
         results: null,
         query: null
       });
+    });
+  },
+
+  rss: function(req, res) {
+    search(req.param("query") || "*").then(function(results) {
+      var hits = results.hits.hits;
+      var RSS = require('rss');
+      var feed = new RSS({
+        title: 'oversight.io',
+        description: 'description',
+        site_url: 'http://oversight.io',
+        language: 'en',
+        ttl: '60'
+      });
+
+      for (var i=0; i<hits.length; i++) {
+        var report = hits[i]._source;
+        feed.item({
+          title:  report.title,
+          description: report.text,
+          url: 'http://oversight.io/report/'+report.inspector+'/'+report.report_id,
+          date: report.published_on
+        });
+      }
+
+      res.send(feed.xml());
+
     });
   },
 
