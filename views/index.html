@@ -59,71 +59,19 @@
 
   <h2 class="col-xs-12 content-heading">Read some of the most recent reports</h2>
 
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Grievance Payout Costs in the South Florida District</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-11-2014</p>
-        <p class="col-xs-7 text-right">United States Postal Service</p>
+  <% for (i = 0; i < 6; i++) {  %>
+    <% var report = results.hits.hits[i]._source %>
+    <a href="/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card">
+        <h4><%= report.title %></h4>
+        <hr>
+        <div class="row">
+          <p class="col-xs-3 col-xs-offset-1 text-left "><%= report.published_on %></p>
+          <p class="col-xs-7 text-right"><%= report.agency_name %></p>
+        </div>
       </div>
-    </div>
-  </a>
-
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Topeka, KS, Material Distribution Center – Information Technology General Controls</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-11-2014</p>
-        <p class="col-xs-7 text-right">United States Postal Service</p>
-      </div>
-    </div>
-  </a>
-
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Advertising and Consulting Supplier Selection Process</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-11-2014</p>
-        <p class="col-xs-7 text-right">United States Postal Service</p>
-      </div>
-    </div>
-  </a>
-
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Assessment of DoD Processes in Support of Committee on Foreign Investment in the United States Determinations and Foreign Ownership, Control, or Influence Mitigation.</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-10-2014</p>
-        <p class="col-xs-7 text-right">Department of Defense</p>
-      </div>
-    </div>
-  </a>
-
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Process Inefficiencies and Costs Discourage Participation in FRA’s RRIF Program</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-10-2014</p>
-        <p class="col-xs-7 text-right">Department of Transportation</p>
-      </div>
-    </div>
-  </a>
-
-  <a href="#" class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card">
-      <h4>Audit Initiated of DOT’s Contract Close-Out Process</h4>
-      <hr>
-      <div class="row">
-        <p class="col-xs-3 col-xs-offset-1 text-left ">6-10-2014</p>
-        <p class="col-xs-7 text-right">Department of Transportation</p>
-      </div>
-    </div>
-  </a>
+    </a>
+  <% } %>
 
   </div>
 </section>

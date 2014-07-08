@@ -11,7 +11,7 @@ module.exports = {
 
   // The homepage. A temporary search page.
   index: function(req, res) {
-    search(req.param("query") || "*").then(function(results) {
+    search("*").then(function(results) {
       res.render("index.html", {
         results: results,
         agencies: require("./agencies"),
