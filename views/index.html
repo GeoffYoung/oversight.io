@@ -61,7 +61,7 @@
 
   <% for (i = 0; i < 6; i++) {  %>
     <% var report = results.hits.hits[i]._source %>
-    <a href="/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12 col-sm-6 col-md-4">
+    <a href="/report/<%= report.inspector %>/<%= report.report_id %>" class="col-xs-12 col-sm-6 col-md-4">
       <div class="card">
         <h4><%= report.title %></h4>
         <hr>
