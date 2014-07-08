@@ -53,8 +53,6 @@ module.exports = {
 
   agency: function(req, res) {
     agencyList(req.param('agency')).then(function(results){
-      // console.log( results.hits.total );
-      // res.send(results);
       res.render("results.html", {
         results: results,
         agencies: require("./agencies"),
