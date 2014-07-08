@@ -27,8 +27,9 @@ app.locals.helpers = require("./app/helpers");
 app.get('/', routes.index);
 app.get('/results', routes.redirect);
 app.get('/results/:query', routes.results);
-app.get('/results/:query/rss', routes.rss);
+app.get('/results/:query/rss', routes.queryFeed);
 app.get('/agency/:agency', routes.agency);
+app.get('/agency/:agency/rss', routes.agencyFeed);
 app.get('/report/:inspector/:report_id', routes.report);
 
 

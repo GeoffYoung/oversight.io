@@ -45,30 +45,9 @@ module.exports = {
     });
   },
 
-  rss: function(req, res) {
+  queryFeed: function(req, res) {
     search(encodeURIComponent( req.param("query") ) || "*").then(function(results) {
-      var hits = results.hits.hits;
-      var RSS = require('rss');
-      var feed = new RSS({
-        title: 'oversight.io',
-        description: 'description',
-        site_url: 'http://oversight.io',
-        language: 'en',
-        ttl: '60'
-      });
-
-      for (var i=0; i<hits.length; i++) {
-        var report = hits[i]._source;
-        feed.item({
-          title:  report.title,
-          description: report.text,
-          url: 'http://oversight.io/report/'+report.inspector+'/'+report.report_id,
-          date: report.published_on
-        });
-      }
-
-      res.send(feed.xml());
-
+      res.send(renderFeed(results));
     });
   },
 
@@ -81,6 +60,12 @@ module.exports = {
         agencies: require("./agencies"),
         agency: req.param("agency")
       });
+    });
+  },
+
+  agencyFeed: function(req, res){
+    agencyList(req.param('agency')).then(function(results){
+      res.send(renderFeed(results));
     });
   },
 
@@ -153,4 +138,29 @@ function search(query) {
       "_source": ["report_id", "year", "inspector", "agency", "title", "agency_name", "url", "landing_url", "inspector_url", "published_on", "type"]
     }
   });
+}
+
+var renderFeed = function(results) {
+  var hits = results.hits.hits;
+  var RSS = require('rss');
+  var feed = new RSS({
+    title: 'oversight.io',
+    description: 'description',
+    site_url: 'http://oversight.io',
+    language: 'en',
+    ttl: '60'
+  });
+
+  for (var i=0; i<hits.length; i++) {
+    var report = hits[i]._source;
+    feed.item({
+      title:  report.title,
+      content: report.text,
+      url: 'http://oversight.io/report/'+report.inspector+'/'+report.report_id,
+      date: report.published_on
+    });
+  }
+
+  return feed.xml();
+
 }
