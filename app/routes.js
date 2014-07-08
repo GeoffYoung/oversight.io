@@ -72,6 +72,18 @@ module.exports = {
     });
   },
 
+  agency: function(req, res) {
+    agencyList(req.param('agency')).then(function(results){
+      // console.log( results.hits.total );
+      // res.send(results);
+      res.render("results.html", {
+        results: results,
+        agencies: require("./agencies"),
+        agency: req.param("agency")
+      });
+    });
+  },
+
   report: function(req, res) {
     get(req.param("report_id")).then(function(result) {
       res.render("report.html", {
@@ -92,6 +104,22 @@ function get(id) {
     index: 'oversight',
     type: 'reports',
     id: id
+  });
+}
+
+function agencyList(agency) {
+  return es.search({
+    index: 'oversight',
+    type: 'reports',
+    body: {
+      "from": 0,
+      "size": 10,
+      query: {
+        match: {
+          agency: agency
+        }
+      }
+    }
   });
 }
 

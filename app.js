@@ -28,6 +28,7 @@ app.get('/', routes.index);
 app.get('/results', routes.redirect);
 app.get('/results/:query', routes.results);
 app.get('/results/:query/rss', routes.rss);
+app.get('/agency/:agency', routes.agency);
 app.get('/report/:inspector/:report_id', routes.report);
 
 
