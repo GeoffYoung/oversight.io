@@ -2582,7 +2582,7 @@ a:focus {
 .card {
   background: white;
   color: #222222;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   padding: 0.4em;
   box-shadow: 0 2px 4px rgba(100, 100, 100, 0.5);
 }
@@ -2599,6 +2599,12 @@ a:hover .card {
   background: #3D2585;
   color: #ffffff;
   padding: 0.6em 0;
+  display: table;
+  width: 100%;
+}
+.agency-links .card h4 {
+  display: table-cell;
+  vertical-align: middle;
 }
 .latest-reports a .card {
   background: white;
